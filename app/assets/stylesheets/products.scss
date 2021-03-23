@@ -1,0 +1,124 @@
+body {
+  background: #fdfdfd;
+  color: #000305;
+  font-size: 87.5%;
+  font-family: 'Trebuchet MS', Trebuchet, 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  line-height: 1.429;
+  margin: 15px;
+  padding: 0;
+  text-align: left;
+}
+
+h2 {
+  font-size: 1.571em
+}
+
+h3 {
+  font-size: 1.429em
+}
+
+/* 20px */
+h4 {
+  font-size: 1.286em
+}
+
+h5 {
+  font-size: 18px
+}
+
+h6 {
+  font-size: 16px
+}
+
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 400;
+  line-height: 1.1;
+  margin-bottom: 14px;
+}
+
+/* Anchors */
+a {
+  outline: 0;
+}
+
+a img {
+  border: 0px;
+  text-decoration: none;
+}
+
+/* Paragraphs */
+p {
+  margin-bottom: 1.143em;
+}
+
+* p:last-child {
+  margin-bottom: 0;
+}
+
+strong,
+b {
+  font-weight: bold;
+}
+
+em,
+i {
+  font-style: italic;
+}
+
+::-moz-selection {
+  background: #F6CF74;
+  color: #fff;
+}
+
+::selection {
+  background: #3d3c38;
+  color: #fff;
+}
+
+/* Lists */
+ul {
+  list-style: outside disc;
+  margin: 15px;
+  padding: 0;
+}
+
+/* Tables */
+table {
+  margin: .5em auto 1.5em auto;
+  width: 100%;
+  border: 1px solid black;
+}
+
+th {
+  padding: .5em .4em;
+  text-align: center;
+  background: rgb(185, 185, 185);
+}
+
+td {
+  padding: .5em .4em;
+  text-align: center;
+}
+
+input {
+  margin: 15px 0
+}
+
+input[type='search'] {
+  margin: 0;
+  height: 40px;
+  margin-left: 25px;
+}
+
+button {
+  padding: 10px 40px;
+  text-align: center;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}

@@ -1,0 +1,28 @@
+<html>
+
+<body>
+  <div style="text-align: center">
+    <%= link_to "<button>Show all</button>".html_safe, root_path, :class => "button" %>
+    <%= link_to "<button>Update</button>".html_safe, edit_product_path(@product), :class => "button" %>
+    <%= link_to "<button>Delete</button>".html_safe, product_path(@product), method: :delete, data: {confirm: 'Delete?'}, :class => "button" %>
+  </div>
+  <ul>
+    <table>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Price</th>
+      </tr>
+      <tr>
+        <td><%= @product.id %></td>
+        <td><%= @product.title %></td>
+        <td><%= @product.description %></td>
+        <td><%= @product.price %></td>
+      </tr>
+    </table>
+
+  </ul>
+</body>
+
+</html>

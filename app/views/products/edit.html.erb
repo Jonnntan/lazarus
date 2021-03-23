@@ -1,0 +1,13 @@
+<html>
+
+<body>
+  <div>
+    <%= link_to "<button>Back</button>".html_safe, products_path(@product), :class => "button" %>
+  </div>
+  <h1 style="text-align:center">Update product</h1>
+  <%= render 'form', product: @product %>
+
+
+</body>
+
+</html>

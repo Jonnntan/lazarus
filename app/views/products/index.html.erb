@@ -1,0 +1,31 @@
+<html>
+
+<body>
+  <h1 style="text-align:center">Products</h1>
+  <div style="text-align: center; display:flex; justify-content: center">
+    <%= link_to "<button>New</button>".html_safe, new_product_path(@product), :class => "button" %>
+    <%= form_tag(search_page_path, :method => 'get', :class => 'button') do %>
+    <%= search_field_tag :search, params[:search], placeholder:' type here to search' %>
+    <%= button_tag 'Search'%>
+    <% end %>
+  </div>
+  <ul>
+    <table>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Price</th>
+      </tr>
+      <% @products.each do |p| %>
+      <tr>
+        <td><%= link_to p.id, product_path(p) %></td>
+        <td><%= p.title %></td>
+        <td><%= p.price %></td>
+      </tr>
+      <% end %>
+    </table>
+
+  </ul>
+</body>
+
+</html>
