@@ -3,7 +3,7 @@
 <body>
   <div>
     <%= link_to "<button>Back</button>".html_safe, root_path, :class => "button" %>
-    <h1 style="text-align:center">Search results</h1>
+    <h1 style="text-align:center">Search results for '<%= @query %>'</h1>
     <ul>
       <table>
         <tr>
@@ -13,17 +13,18 @@
           <th>Price</th>
           <th></th>
         </tr>
+        <% @results.each do |result| %>
         <tr>
-          <% @results.each do |result| %>
+
             <td><%= result.id %><br></td>
             <td><%= result.title %><br></td>
             <td><%= result.description %><br></td>
             <td><%= result.price %><br></td>
             <td style='width: 25%'><%= link_to "<button>Update</button>".html_safe, edit_product_path(result), :class => "button" %>
             <%= link_to "<button>Delete</button>".html_safe, product_path(result), method: :delete, data: {confirm: 'Delete?'}, :class => "button" %></td>
-            <% end %>
           </td>
         </tr>
+        <% end %>
       </table>
 
     </ul>

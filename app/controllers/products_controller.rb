@@ -43,8 +43,11 @@ class ProductsController < ApplicationController
   end
 
   def search
-    @@query = params[:search].downcase
-    @results = Product.all.where("lower(title) LIKE :search", search: @@query)
+    if params[:search].blank?
+      redirect_to root_path
+    end
+    @query = params[:search].downcase
+    @results = Product.all.where("lower(title) LIKE :search", search: "%#{@query}%")
   end
 
   private
