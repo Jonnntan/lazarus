@@ -10,53 +10,14 @@ body {
 }
 
 h2 {
-  font-size: 1.571em
-}
-
-h3 {
-  font-size: 1.429em
-}
-
-/* 20px */
-h4 {
-  font-size: 1.286em
-}
-
-h5 {
-  font-size: 18px
-}
-
-h6 {
-  font-size: 16px
-}
-
-h2,
-h3,
-h4,
-h5,
-h6 {
+  font-size: 1.571em;
   font-weight: 400;
   line-height: 1.1;
   margin-bottom: 14px;
 }
 
-/* Anchors */
-a {
-  outline: 0;
-}
-
-a img {
-  border: 0px;
-  text-decoration: none;
-}
-
-/* Paragraphs */
 p {
   margin-bottom: 1.143em;
-}
-
-* p:last-child {
-  margin-bottom: 0;
 }
 
 strong,
@@ -69,24 +30,12 @@ i {
   font-style: italic;
 }
 
-::-moz-selection {
-  background: #F6CF74;
-  color: #fff;
-}
-
-::selection {
-  background: #3d3c38;
-  color: #fff;
-}
-
-/* Lists */
 ul {
   list-style: outside disc;
   margin: 15px;
   padding: 0;
 }
 
-/* Tables */
 table {
   margin: .5em auto 1.5em auto;
   width: 100%;
@@ -100,12 +49,8 @@ th {
 }
 
 td {
-  padding: .5em .4em;
+  padding: 15px 5px;
   text-align: center;
-}
-
-input {
-  margin: 15px 0
 }
 
 input[type='search'] {
@@ -115,10 +60,48 @@ input[type='search'] {
 }
 
 button {
-  padding: 10px 40px;
+  padding: 10px 35px;
   text-align: center;
   display: inline-block;
   font-size: 16px;
-  margin: 4px 2px;
   cursor: pointer;
+}
+
+button:hover {
+  background: black;
+  color: white;
+}
+
+a.link {
+  background-color: #f4f4f4;
+  padding: 10px 20px;
+  border: 1px solid black;
+  border-radius: 3px;
+  text-decoration: none;
+  color: black;
+  margin-left: 15px;
+}
+
+a.link:hover {
+  background-color: black;
+  color: white;
+}
+
+input {
+  padding: 10px 50px;
+  margin-bottom: 15px;
+}
+
+select {
+  padding: 10px 89px;
+  margin-bottom: 15px;
+}
+
+textarea {
+  width: 26%;
+  margin-bottom: 15px;
+}
+
+input.submit {
+  padding: 10px 77px;
 }

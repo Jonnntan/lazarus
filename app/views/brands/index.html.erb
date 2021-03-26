@@ -1,0 +1,33 @@
+<html>
+
+<body>
+  <h1 style="text-align:center">Brand(s)</h1>
+  <div style="text-align: center; display:flex; justify-content: center">
+   <%= link_to 'Back', :back, :class => 'link' %>
+    <%= link_to 'Home', root_path, :class => 'link' %>
+    <a href='<%= new_brand_path %> ' class="link">New Brand</a>
+    <%= form_tag(search_path, :method => 'get') do %>
+    <%= search_field_tag :search, params[:search], placeholder:'' %>
+    <%= button_tag 'Search', :name => nil, :class => 'link' %>
+    <% end %>
+  </div>
+  <ul>
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>No. of Product(s)</th>
+        <th>Actions</th>
+      </tr>
+      <% @brands.each do |brand| %>
+        <tr>
+          <td><%= link_to brand.name, brand_products_path(brand) %></td>
+          <td><%= brand.products.count %></td>
+           <td><a href='<%= edit_brand_path(brand) %>' class="link">Update</a>
+           <%= link_to "Delete", brand_path(brand.id), method: :delete, data: {confirm: 'Delete?'}, :class => "link" %></td>
+        </tr>
+      <% end %>
+    </table>
+  </ul>
+</body>
+
+</html>

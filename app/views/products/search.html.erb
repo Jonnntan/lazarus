@@ -2,7 +2,8 @@
 
 <body>
   <div>
-    <%= link_to "<button>Back</button>".html_safe, root_path, :class => "button" %>
+    <%= link_to 'Back', :back, :class => 'link' %>
+    <%= link_to 'Home', root_path, :class => 'link' %>
     <h1 style="text-align:center">Search results for '<%= @query %>'</h1>
     <ul>
       <table>

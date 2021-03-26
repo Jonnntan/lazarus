@@ -1,0 +1,19 @@
+<html>
+
+<body>
+  <h1 style="text-align:center">Admin Panel</h1>
+  <div style="text-align: center; display:flex; justify-content: center">
+    <a href='<%= products_path %> ' class="link">Products</a>
+    <a href='<%= brands_path %> ' class="link">Brands</a>
+    <%= form_tag(search_path, :method => 'get') do %>
+    <%= search_field_tag :search, params[:search], placeholder:'' %>
+    <%= button_tag 'Search', :name => nil, :class => 'link' %>
+    <% end %>
+  </div>
+  <ul>
+
+
+  </ul>
+</body>
+
+</html>

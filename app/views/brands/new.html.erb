@@ -1,0 +1,13 @@
+<html>
+
+<body>
+  <div>
+    <%= link_to 'Back', :back, :class => 'link' %>
+    <%= link_to 'Home', root_path, :class => 'link' %>
+    <h1 style="text-align:center">Create new brand</h1>
+    <%= render 'form', brand: @brand %>
+  </div>
+
+</body>
+
+</html>
