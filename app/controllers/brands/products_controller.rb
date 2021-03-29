@@ -6,8 +6,8 @@ class Brands::ProductsController < ApplicationController
   end
 
   def find_id
-    @product = Product.find(params[:brand_id])
     @brand = Brand.find(params[:brand_id])
+    @product = Product.find_by(brand_id: @brand.id)
   end
 
   def show
