@@ -53,10 +53,9 @@ class ProductsController < ApplicationController
     @results = Product.where("lower(title) LIKE :search", search: "%#{@query}%")
   end
 
-  # private
+  private
 
   def product_params
     params.require(:product).permit(:title, :description, :price, :brand_id)
-    # params.permit(:title, :description, :price, :brand_id)
   end
 end
