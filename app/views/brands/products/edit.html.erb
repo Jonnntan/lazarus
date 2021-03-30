@@ -1,0 +1,21 @@
+<html>
+
+<body>
+  <div>
+    <%= link_to 'Back', :back, :class => 'link' %>
+    <%= link_to 'Home', root_path, :class => 'link' %>
+    <h1 style="text-align:center">Update <%= @brand.name %> product</h1>
+    <div class='form' style='margin-left:40%'>
+      <%= form_for @product, :url => brand_product_path(id: @product.id) do |form| %>
+          <%= form.text_field :title, placeholder: 'Title' %><br>
+          <%= form.text_field :brand_id, :value => @brand.name, disabled: true %><br>
+          <%= form.text_area :description, placeholder: 'Description' %><br>
+          <%= form.number_field :price, step: 0.1, placeholder: 'Price' %><br>
+          <%= form.submit :class => 'submit' %>
+      <% end %>
+    </div>
+  </div>
+
+</body>
+
+</html>

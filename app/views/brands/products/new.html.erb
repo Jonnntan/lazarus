@@ -3,7 +3,8 @@
 <body>
   <div>
     <%= link_to 'Back', :back, :class => 'link' %>
-    <h1 style="text-align:center">Create new product</h1>
+    <%= link_to 'Home', root_path, :class => 'link' %>
+    <h1 style="text-align:center">Create new <%= @brand.name %> product</h1>
     <%= render 'form', product: @product %>
   </div>
 

@@ -1,32 +1,29 @@
 <html>
 
 <body>
-  <h1 style="text-align:center">Products</h1>
+  <h1 style="text-align:center"><%= @brand.name %> Product(s)</h1>
   <div style="text-align: center; display:flex; justify-content: center">
     <%= link_to 'Back', :back, :class => 'link' %>
     <%= link_to 'Home', root_path, :class => 'link' %>
-    <a href='<%= new_product_path %> ' class="link">New Product</a>
+    <a href='<%= new_brand_product_path %> ' class="link">New <%= @brand.name %> Product</a>
     <%= form_tag(search_path, :method => 'get') do %>
     <%= search_field_tag :search, params[:search], placeholder:'' %>
     <%= button_tag 'Search', :name => nil, :class => 'link' %>
     <% end %>
   </div>
-  <ul><br>
+  <ul>
+    <br>
     <table>
       <tr>
         <th>Name</th>
-        <th>Brand</th>
         <th>Price</th>
         <th>Actions</th>
       </tr>
-      <% @products.each do |product| %>
+      <% @brand.products.each do |product| %>
       <tr style="margin:5px 0px">
         <td><%= product.title %></td>
-        <td><%= link_to product.brand.name, brand_products_path(product.brand.id) %></td>
         <td><%= product.price %></td>
-        <td><a href='<%= edit_product_path(product) %>' class="link">Update</a>
-          <%= link_to "Delete", product_path(product), method: :delete, data: {confirm: 'Delete?'}, :class => "link" %>
-        </td>
+        <td><a href='<%= edit_brand_product_path(brand_id: @brand.id, id: product.id) %>' class="link">Update</a></td>
       </tr>
       <% end %>
     </table>
