@@ -1,7 +1,10 @@
 class Brand < ApplicationRecord
-  after_validation :slug_url, only: [:create, :update]
+  # after_validation :slug_url, only: [:create, :update]
+
 
   has_many :products
+
+  validates :name, presence: true
 
   def slug_url
     self.name.to_s.parameterize
