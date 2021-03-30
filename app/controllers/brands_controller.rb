@@ -8,9 +8,7 @@ class BrandsController < ApplicationController
   end
 
   def show
-    # find_id
     redirect_to brands_path
-    # @products = Product.all
   end
 
   def new
@@ -34,7 +32,7 @@ class BrandsController < ApplicationController
     find_id
 
     if @brand.update(brand_params)
-      redirect_to @brand
+      redirect_to brands_path
     else
       render :edit
     end
