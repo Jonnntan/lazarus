@@ -41,6 +41,8 @@ class ProductsController < ApplicationController
 
   def destroy
     find_id
+
+    @product.variants.destroy_all
     @product.destroy
 
     redirect_to products_path

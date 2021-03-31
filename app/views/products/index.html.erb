@@ -22,7 +22,7 @@
       <% @products.each do |product| %>
       <tr style="margin:5px 0px">
         <td><%= link_to product.title, product_variants_path(product) %></td>
-        <td><%= link_to product.brand.name, brand_products_path(product) %></td>
+        <td><%= link_to product.brand.name, brand_products_path(product.brand_id) %></td>
         <td><%= product.variants.count %></td>
         <td><a href='<%= edit_product_path(product) %>' class="link">Update</a>
           <%= link_to "Delete", product_path(product), method: :delete, data: {confirm: 'Delete?'}, :class => "link" %>

@@ -1,0 +1,18 @@
+<html>
+
+<body>
+  <div>
+    <div class='form' style='margin-left:40%'>
+      <%= form_for @variant, :url => product_variants_path(product_id: @product.id) do |form| %>
+          <%= form.text_field :name, placeholder: 'Name' %><br>
+          <%= form.text_field :product_id, :value => @product.title, disabled: true %><br>
+          <%= form.number_field :inventory, min: 1, placeholder: 'Inventory' %><br>
+          <%= form.number_field :price, placeholder: 'Price' %><br>
+          <%= form.submit :class => 'submit' %>
+      <% end %>
+    </div>
+  </div>
+
+</body>
+
+</html>

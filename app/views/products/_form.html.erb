@@ -2,12 +2,12 @@
 
 <body>
   <div class='form' style='margin-left:40%'>
-  <%= form_with model: product do |form| %>
-    <%= form.text_field :title, placeholder: 'Title' %><br>
-    <%= form.collection_select :brand_id, Brand.all, :id, :name %><br>
-    <%= form.text_area :description, placeholder: 'Description' %><br>
-    <%= form.number_field :price, step: 0.1, placeholder: 'Price' %><br>
-    <%= form.submit :class => 'submit' %>
+  <%= form_for @product do |pform| %>
+    <%= pform.text_field :title, placeholder: 'Title' %><br>
+    <%= pform.collection_select :brand_id, Brand.all, :id, :name %><br>
+    <%= pform.text_area :description, placeholder: 'Description' %><br>
+    <%= pform.number_field :price, step: 0.1, placeholder: 'Price' %><br>
+    <%= pform.submit :class => 'submit' %>
   <% end %>
   </div>
 

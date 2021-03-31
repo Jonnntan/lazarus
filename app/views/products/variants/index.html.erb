@@ -5,7 +5,7 @@
   <div style="text-align: center; display: flex; justify-content: center">
     <%= link_to 'Back', :back, :class => 'link' %>
     <%= link_to 'Home', root_path, :class => 'link' %>
-    <a href='<%= new_product_path %> ' class="link">New Variant</a>
+    <a href='<%= new_product_variant_path %> ' class="link">New Variant</a>
     <%= form_tag(search_path, :method => 'get') do %>
     <%= search_field_tag :search, params[:search], placeholder:'' %>
     <%= button_tag 'Search', :name => nil, :class => 'link' %>
@@ -24,6 +24,7 @@
           <td><%= variant.name %></td>
           <td><%= variant.inventory %></td>
           <td><%= variant.price %></td>
+          <td><a href='<%= edit_product_variant_path(variant.product_id, @product.id) %>' class="link">Update</a>
         </tr>
       <% end %>
     </table>

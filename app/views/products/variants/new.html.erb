@@ -1,0 +1,12 @@
+<html>
+
+<body>
+  <div>
+    <%= link_to 'Back', :back, :class => 'link' %>
+    <h1 style="text-align:center">Create new <%= @product.title %> variant(s)</h1>
+    <%= render 'form', variant: @variant %>
+  </div>
+
+</body>
+
+</html>
