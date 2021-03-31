@@ -1,8 +1,8 @@
 class Brands::ProductsController < ApplicationController
   def index
     find_id
+    @brands = Brand.all
     @products = Product.all
-    # @brands = Brand.all
   end
 
   def find_id
@@ -46,7 +46,8 @@ class Brands::ProductsController < ApplicationController
 
   # def destroy
   #   find_id
-  #   @product2.destroy
+  #   @product.destroy
+  #   @product.variants.destroy_all
 
   #   redirect_to root_path
   # end
