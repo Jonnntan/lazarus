@@ -16,15 +16,15 @@
     <table>
       <tr>
         <th>Name</th>
-        <th>Price</th>
+        <th>Variant(s)</th>
         <th>Actions</th>
       </tr>
       <% @brand.products.each do |product| %>
-      <tr style="margin:5px 0px">
-        <td><%= product.title %></td>
-        <td><%= product.price %></td>
-        <td><a href='<%= edit_brand_product_path(brand_id: @brand.id, id: product.id) %>' class="link">Update</a></td>
-      </tr>
+        <tr style="margin:5px 0px">
+          <td><%= product.title %></td>
+          <td><%= product.variants.count %></td>
+          <td><a href='<%= edit_brand_product_path(brand_id: @brand.id, id: product.id) %>' class="link">Update</a></td>
+        </tr>
       <% end %>
     </table>
   </ul>

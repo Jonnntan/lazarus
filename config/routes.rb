@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   end
 
   resources :products do
-    resources :variants
+    resources :variants, controller: 'products/variants'
   end
 
   resources :products

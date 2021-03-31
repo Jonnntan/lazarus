@@ -2,7 +2,6 @@ class Brands::ProductsController < ApplicationController
   def index
     find_id
     @products = Product.all
-    # @brands = Brand.all
   end
 
   def find_id
