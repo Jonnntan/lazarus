@@ -37,10 +37,16 @@ class Products::VariantsController < ApplicationController
     find_id
 
     if @variant.update(variant_params)
-      redirect_to @variant
+      redirect_to product_variant_path
     else
       render :edit
     end
+  end
+
+  def destroy
+    find_id
+    @variant.destroy
+    redirect_to root_path
   end
 
   private

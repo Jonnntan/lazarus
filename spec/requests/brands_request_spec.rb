@@ -30,6 +30,7 @@ RSpec.describe "Brands", type: :request do
     let!(:brand) { create(:brand) }
     it 'update a Brand name and redirects to index' do
       put "/brands/#{brand.id}", params: { brand: {name: 'Sephora'} }
+      
       expect(response).to redirect_to brands_path
       follow_redirect!
       expect(response.body).to include('Sephora')
