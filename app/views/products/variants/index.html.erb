@@ -25,6 +25,7 @@
           <td><%= variant.inventory %></td>
           <td><%= variant.price %></td>
           <td><a href='<%= edit_product_variant_path(variant.product_id, @product.id) %>' class="link">Update</a>
+          <%= link_to "Delete", product_variant_path(@product.id, variant.id), method: :delete, data: {confirm: 'Delete?'}, :class => "link" %></td>
         </tr>
       <% end %>
     </table>

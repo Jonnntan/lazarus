@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 describe Product do
-  let(:product) { create :product }
 
   describe 'associations' do
     it { is_expected.to belong_to(:brand) }
