@@ -1,0 +1,13 @@
+<html>
+
+<body>
+  <div>
+    <%= link_to 'Back', :back, :class => 'link' %>
+    <%= link_to 'Home', root_path, :class => 'link' %>
+    <h1 style="text-align:center">Update category</h1>
+    <%= render 'form', category: @category %>
+  </div>
+
+</body>
+
+</html>

@@ -16,6 +16,7 @@
       <tr>
         <th>Name</th>
         <th>Brand</th>
+        <th>Category</th>
         <th>No. of Variant(s)</th>
         <th>Actions</th>
       </tr>
@@ -23,6 +24,7 @@
       <tr style="margin:5px 0px">
         <td><%= link_to product.title, product_variants_path(product) %></td>
         <td><%= link_to product.brand.name, brand_products_path(product.brand_id) %></td>
+        <td><%= link_to product.category.name, category_products_path(product.category.id) %></td>
         <td><%= product.variants.count %></td>
         <td><a href='<%= edit_product_path(product) %>' class="link">Update</a>
           <%= link_to "Delete", product_path(product), method: :delete, data: {confirm: 'Delete?'}, :class => "link" %>

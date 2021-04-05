@@ -1,0 +1,13 @@
+<html>
+
+<body>
+  <div class='form' style='margin-left:40%'>
+  <%= form_with model: category do |form| %>
+    <%= form.text_field :name, placeholder: 'Name' %><br>
+    <%= form.submit :class => 'submit' %>
+  <% end %>
+  </div>
+
+</body>
+
+</html>

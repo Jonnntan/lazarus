@@ -13,6 +13,10 @@
         <td><%= pform.collection_select :brand_id, Brand.all, :id, :name %></td>
       </tr>
       <tr>
+        <td><%= pform.label :category_id, "Category" %></td>
+        <td><%= pform.collection_select :category_id, Category.all, :id, :name %><br></td>
+      </tr>
+      <tr>
         <td><%= pform.label :description, "Description" %></td>
         <td><%= pform.text_area :description %></td>
       </tr>
