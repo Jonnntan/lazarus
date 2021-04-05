@@ -5,13 +5,14 @@
     <%= link_to 'Back', :back, :class => 'link' %>
   </div>
   <h1 style="text-align:center">Update Variant</h1>
-   <div class='form' style='margin-left:40%'>
-      <%= form_for @variant, :url => product_variant_path(@product.id) do |form| %>
+
+    <div class='form' style='margin-left:40%'>
+      <%= form_for @variant, :url => product_variant_path(@variant.product_id, @variant.id) do |form| %>
           <%= form.text_field :name, placeholder: 'Name' %><br>
           <%= form.text_field :product_id, :value => @product.title, disabled: true %><br>
           <%= form.number_field :inventory, min: 1, placeholder: 'Inventory' %><br>
           <%= form.number_field :price, placeholder: 'Price' %><br>
-          <%= form.submit %>
+          <%= form.submit :class => 'submit' %>
       <% end %>
     </div>
 </body>

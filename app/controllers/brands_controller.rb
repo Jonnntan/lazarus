@@ -46,13 +46,6 @@ class BrandsController < ApplicationController
     redirect_to brands_path
   end
 
-  # def search
-  #   redirect_to root_path if params[:search].blank?
-
-  #   @query = params[:search].downcase
-  #   @results = Product.where("lower(title) LIKE :search", search: "%#{@query}%")
-  # end
-
   private
 
   def brand_params

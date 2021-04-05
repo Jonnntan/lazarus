@@ -1,29 +1,31 @@
 class Brands::ProductsController < ApplicationController
+  before_action :find_id
+
   def index
-    find_id
     @brands = Brand.all
     @products = Product.all
   end
 
   def find_id
     @brand = Brand.find(params[:brand_id])
-    @product = Product.find_by(brand_id: @brand.id)
+    @product = @brand.products.find_by(brand_id: params[:brand_id], id: params[:id])
   end
 
   def show
-    find_id
   end
 
   def new
-    find_id
     @product = @brand.products.new
   end
 
   def create
-    find_id
     @product = @brand.products.new(product_params)
 
     if @product.save
+      if @product.variants.empty?
+        variant = Variant.new(name: @product.title, inventory: 1, price: @product.price, product_id: @product.id)
+        variant.save
+      end
       redirect_to @product
     else
       render :new
@@ -31,33 +33,22 @@ class Brands::ProductsController < ApplicationController
   end
 
   def edit
-    find_id
   end
 
   def update
-    find_id
-
-    if @brand.products.update(product_params)
-      redirect_to brand_products_path
+    if @product.update(product_params)
+      redirect_to product_path
     else
       render :edit
     end
   end
 
-  # def destroy
-  #   find_id
-  #   @product.destroy
-  #   @product.variants.destroy_all
+  def destroy
+    @product.destroy
+    @product.variants.destroy_all
 
-  #   redirect_to root_path
-  # end
-
-  # def search
-  #   redirect_to root_path if params[:search].blank?
-
-  #   @query = params[:search].downcase
-  #   @results = Product.where("lower(title) LIKE :search", search: "%#{@query}%")
-  # end
+    redirect_to brand_products_path(@product.brand_id)
+  end
 
   private
 
