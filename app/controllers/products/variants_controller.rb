@@ -31,7 +31,7 @@ class Products::VariantsController < ApplicationController
   end
 
   def update
-    if @product.variants.update(variant_params)
+    if @variant.update(variant_params)
       redirect_to product_variant_path
     else
       render :edit

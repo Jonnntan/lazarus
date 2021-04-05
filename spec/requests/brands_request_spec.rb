@@ -43,9 +43,10 @@ RSpec.describe "Brands", type: :request do
        create_list(:product, 3, brand: brand)
     end
     it "destroy a Brand & all it's products" do
-      byebug
-      expect { delete brand_path(brand.id) }.to change(Brand, :count).by(-1)
-      expect { delete brand_path(product.brand_id) }.to change(Product, :count).by(-3)
+
+      brand1 = brand.first
+      expect { brand1.destroy }.to change(Brand, :count).by(-1)
+      expect { brand.products.destroy_all }.to change(Product, :count).by(-3)
       expect(Brand.count).to be_zero
       expect(brand.products.count).to be_zero
     end

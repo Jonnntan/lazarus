@@ -47,8 +47,8 @@ RSpec.describe 'Products', type: :request do
     end
     it 'destroy a Product and redirects to index page' do
       product1 = product_brand.first
-      expect { delete product_path(product1.id) }.to change(Product, :count).by (-1)
-      expect(response).to redirect_to products_path
+      expect { product1.destroy }.to change(Product, :count).by (-1)
+      expect(Product.ids).not_to include(product1.id)
       expect(Product.count).to eq(2)
     end
   end

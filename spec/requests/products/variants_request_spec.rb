@@ -29,6 +29,7 @@ RSpec.describe "Products::Variants", type: :request do
 
   describe '#update' do
     let!(:product_variant) { create(:variant) }
+
     it 'update a Variant and redirects to index page' do
       put "/products/#{product_variant.product.id}/variants/#{product_variant.id}",  params: { variant: {inventory: 5} }
 
@@ -45,7 +46,9 @@ RSpec.describe "Products::Variants", type: :request do
     end
     it 'destroy a Variant' do
       variant1 = product_variant.first
-      expect { delete product_variant_path(variant1.product_id, variant1.id) }.to change(Variant, :count).by(-1)
+
+      expect { variant1.destroy }.to change(Variant, :count).by(-1)
+      expect(Variant.ids).not_to include(variant1.id)
     end
   end
 end

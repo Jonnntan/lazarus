@@ -36,7 +36,7 @@ class Brands::ProductsController < ApplicationController
   end
 
   def update
-    if @brand.products.update(product_params)
+    if @product.update(product_params)
       redirect_to product_path
     else
       render :edit
