@@ -30,19 +30,22 @@ RSpec.describe "Products::Variants", type: :request do
   describe '#update' do
     let!(:product_variant) { create(:variant) }
     it 'update a Variant and redirects to index page' do
-      patch "/products/#{product_variant.product.id}/variants/#{product_variant.id}",  params: { variant: {inventory: 5} }
+      put "/products/#{product_variant.product.id}/variants/#{product_variant.id}",  params: { variant: {inventory: 5} }
 
       expect(response).to redirect_to product_variant_path
       follow_redirect!
-      expect(Variant.last.inventory).to eq(5)
+      expect(product_variant.reload.inventory).to eq(5)
+      expect(response.body).to include('Variant 3')
     end
   end
 
   describe '#destroy' do
-    let!(:product_variant) { create(:variant) }
+    let!(:product_variant) do
+      create_list(:variant, 3)
+    end
     it 'destroy a Variant' do
-      expect { delete product_variant_path(product_variant.product_id, product_variant.id) }.to change(Variant, :count).by(-1)
-      expect(Variant.count).to be_zero
+      variant1 = product_variant.first
+      expect { delete product_variant_path(variant1.product_id, variant1.id) }.to change(Variant, :count).by(-1)
     end
   end
 end

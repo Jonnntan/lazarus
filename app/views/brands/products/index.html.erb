@@ -23,8 +23,8 @@
         <tr style="margin:5px 0px">
           <td><%= link_to product.title, product_variants_path(product) %></td>
           <td><%= product.variants.count %></td>
-          <td><a href='<%= edit_brand_product_path(brand_id: @brand.id, id: product.id) %>' class="link">Update</a>
-          
+          <td><a href='<%= edit_brand_product_path(product.brand_id, product.id) %>' class="link">Update</a>
+          <%= link_to "Delete", brand_product_path(brand_id: @brand.id, id: product.id), method: :delete, data: {confirm: 'Delete?'}, :class => "link" %></td>
         </tr>
       <% end %>
     </table>
