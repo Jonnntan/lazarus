@@ -46,9 +46,10 @@ RSpec.describe "Products::Variants", type: :request do
     end
     it 'destroy a Variant' do
       variant1 = product_variant.first
-
-      expect { variant1.destroy }.to change(Variant, :count).by(-1)
+      
+      delete(product_variant_path(variant1.product_id, variant1.id))
       expect(Variant.ids).not_to include(variant1.id)
+      expect(Variant.count).to eq(2)
     end
   end
 end

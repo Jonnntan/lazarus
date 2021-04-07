@@ -22,10 +22,6 @@ class Brands::ProductsController < ApplicationController
     @product = @brand.products.new(product_params)
 
     if @product.save
-      if @product.variants.empty?
-        variant = Variant.new(name: @product.title, inventory: 1, price: @product.price, product_id: @product.id)
-        variant.save
-      end
       redirect_to @product
     else
       render :new

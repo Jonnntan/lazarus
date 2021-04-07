@@ -1,15 +1,18 @@
 Rails.application.routes.draw do
   get '/search' => 'products#search', :as => 'search'
-  get '/admin' => 'admin#index', :as => 'admin'
 
   resources :brands do
-    resources :products, controller: 'brands/products'
+    scope module: :brands do
+      resources :products
+    end
   end
 
   resources :products do
-    resources :variants, controller: 'products/variants'
+    scope module: :products do
+      resources :variants
+    end
+    get :search, on: :collection
   end
 
-  resources :products
   root 'admin#index'
 end

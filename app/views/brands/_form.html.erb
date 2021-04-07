@@ -1,10 +1,12 @@
 <html>
 
 <body>
-  <div class='form' style='margin-left:40%'>
+  <div class='form'>
   <%= form_with model: brand do |form| %>
-    <%= form.text_field :name, placeholder: 'Name' %><br>
-    <%= form.submit :class => 'submit' %>
+  <table class='form-table'>
+    <tr><td><%= form.text_field :name, placeholder: 'Name' %></td></tr>
+    <tr><td><%= form.submit :class => 'submit' %></td></tr>
+  </table>
   <% end %>
   </div>
 
