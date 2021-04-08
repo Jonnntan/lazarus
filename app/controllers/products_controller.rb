@@ -8,7 +8,7 @@ class ProductsController < ApplicationController
   end
 
   def show
-    find_id
+    @product = Product.find(params[:id])
   end
 
   def new
@@ -27,7 +27,7 @@ class ProductsController < ApplicationController
   end
 
   def edit
-    find_id
+    @product = Product.find(params[:id])
   end
 
   def update
@@ -41,11 +41,7 @@ class ProductsController < ApplicationController
   end
 
   def destroy
-    find_id
-
-    @product.variants.destroy_all
-    @product.destroy
-
+    Product.find(params[:id]).destroy
     redirect_to products_path
   end
 

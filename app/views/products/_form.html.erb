@@ -18,7 +18,7 @@
       </tr>
     </table>
     <h2>Variant</h2>
-    <%= pform.fields_for :variants do |vform| %><br>
+    <%= pform.fields_for :variants do |vform| %>
     <div class='nested-form'>
       <%= vform.text_field :name, placeholder: 'Name' %>
       <%= vform.number_field :inventory, min: 1, placeholder: 'Inventory' %>

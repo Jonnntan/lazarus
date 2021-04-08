@@ -23,6 +23,8 @@
         <td><a href='<%= edit_product_path(@product) %> ' class="link">Update</a>
     <%= link_to "Delete", product_path(@product), method: :delete, data: {confirm: 'Delete?'}, :class => "link" %></td>
       </tr>
+    </table>
+    <table>
       <th colspan="6">Variant(s)</th>
       <tr>
         <th>ID</th>
