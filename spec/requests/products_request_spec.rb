@@ -33,11 +33,11 @@ RSpec.describe 'Products', type: :request do
   describe '#update' do
     let(:product_brand) { create(:product, brand: brand) }
     it 'update a Product details and redirects to the show page' do
-      put "/products/#{product_brand.id}", params: { product: {price: 88} }
+      put "/products/#{product_brand.id}", params: { product: {title: 'Lipstick'} }
 
       expect(response).to redirect_to product_path(brand.products.last.id)
       follow_redirect!
-      expect(product_brand.reload.price).to eq(88)
+      expect(product_brand.reload.title).to eq('Lipstick')
     end
   end
 
@@ -47,7 +47,7 @@ RSpec.describe 'Products', type: :request do
     end
     it 'destroy a Product and redirects to index page' do
       product1 = product_brand.first
-      expect { product1.destroy }.to change(Product, :count).by (-1)
+      delete(product_path(product1))
       expect(Product.ids).not_to include(product1.id)
       expect(Product.count).to eq(2)
     end

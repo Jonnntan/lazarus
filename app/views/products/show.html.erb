@@ -7,12 +7,12 @@
   </div>
   <ul>
     <table>
+      <tr><th colspan="6">Product</th></tr>
       <tr>
         <th>ID</th>
         <th>Brand</th>
         <th>Name</th>
         <th>Description</th>
-        <th>Price</th>
         <th>Actions</th>
       </tr>
       <tr>
@@ -20,10 +20,27 @@
         <td><%= @product.brand.name %></td>
         <td><%= @product.title %></td>
         <td><%= @product.description %></td>
-        <td><%= @product.price %></td>
         <td><a href='<%= edit_product_path(@product) %> ' class="link">Update</a>
     <%= link_to "Delete", product_path(@product), method: :delete, data: {confirm: 'Delete?'}, :class => "link" %></td>
       </tr>
+    </table>
+    <table>
+      <th colspan="6">Variant(s)</th>
+      <tr>
+        <th>ID</th>
+        <th colspan='2'>Name</th>
+        <th>Inventory</th>
+        <th>Price</th>
+        <th>Actions</th>
+      </tr>
+      <% @product.variants.each do |variant| %>
+      <tr>
+        <td><%= variant.id %></td>
+        <td colspan='2'><%= variant.name %></td>
+        <td><%= variant.inventory %></td>
+        <td><%= variant.price %></td>
+      </tr>
+      <% end %>
     </table>
 
   </ul>

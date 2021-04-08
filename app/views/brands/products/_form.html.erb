@@ -2,15 +2,35 @@
 
 <body>
   <div>
-    <div class='form' style='margin-left:40%'>
+    <div class='form'>
       <%= form_for @product, :url => brand_products_path(brand_id: @brand.id) do |form| %>
-          <%= form.text_field :title, placeholder: 'Title' %><br>
-          <%= form.text_field :brand_id, :value => @brand.name, disabled: true %><br>
-          <%= form.text_area :description, placeholder: 'Description' %><br>
-          <%= form.number_field :price, step: 0.1, placeholder: 'Price' %><br>
-          <%= form.submit :class => 'submit' %>
+      <table class='form-table'>
+        <tr>
+          <td><%= form.label :title, "Title" %></td>
+          <td><%= form.text_field :title %></td>
+        </tr>
+        <tr>
+          <td><%= form.label :brand_id, "Brand" %></td>
+          <td><%= form.text_field :brand_id, :value => @brand.name, disabled: true %></td>
+        </tr>
+        <tr>
+          <td><%= form.label :description, "Description" %></td>
+          <td><%= form.text_area :description, placeholder: 'Description' %></td>
+        </tr>
+      </table>
+
+      <h2>Variant</h2>
+      <%= form.fields_for :variants do |vform| %>
+      <div class='nested-form'>
+        <%= vform.text_field :name, placeholder: 'Name' %>
+        <%= vform.number_field :inventory, min: 1, placeholder: 'Inventory' %>
+        <%= vform.number_field :price, placeholder: 'Price' %>
+      </div>
       <% end %>
+    <div style="text-align:center">
+      <%= form.submit class: 'submit' %>
     </div>
+    <% end %>
   </div>
 
 </body>

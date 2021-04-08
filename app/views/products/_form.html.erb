@@ -1,14 +1,34 @@
 <html>
 
 <body>
-  <div class='form' style='margin-left:40%'>
-  <%= form_for @product do |pform| %>
-    <%= pform.text_field :title, placeholder: 'Title' %><br>
-    <%= pform.collection_select :brand_id, Brand.all, :id, :name %><br>
-    <%= pform.text_area :description, placeholder: 'Description' %><br>
-    <%= pform.number_field :price, step: 0.1, placeholder: 'Price' %><br>
-    <%= pform.submit :class => 'submit' %>
-  <% end %>
+  <div class='form'>
+    <%= form_with model: @product do |pform| %>
+    <table class='form-table'>
+      <tr>
+        <td><%= pform.label :title, "Title" %></td>
+        <td><%= pform.text_field :title %></td>
+      </tr>
+      <tr>
+        <td><%= pform.label :brand_id, "Brand" %></td>
+        <td><%= pform.collection_select :brand_id, Brand.all, :id, :name %></td>
+      </tr>
+      <tr>
+        <td><%= pform.label :description, "Description" %></td>
+        <td><%= pform.text_area :description %></td>
+      </tr>
+    </table>
+    <h2>Variant</h2>
+    <%= pform.fields_for :variants do |vform| %>
+    <div class='nested-form'>
+      <%= vform.text_field :name, placeholder: 'Name' %>
+      <%= vform.number_field :inventory, min: 1, placeholder: 'Inventory' %>
+      <%= vform.number_field :price, placeholder: 'Price' %>
+    </div>
+    <% end %>
+    <div style="text-align:center">
+      <%= pform.submit class: 'submit' %>
+    </div>
+    <% end %>
   </div>
 
 </body>

@@ -8,21 +8,18 @@ class ProductsController < ApplicationController
   end
 
   def show
-    find_id
+    @product = Product.find(params[:id])
   end
 
   def new
     @product = Product.new
+    @product.variants.build
   end
 
   def create
     @product = Product.new(product_params)
 
     if @product.save
-      if @product.variants.empty?
-        variant = Variant.new(name: @product.title, inventory: 1, price: @product.price, product_id: @product.id)
-        variant.save
-      end
       redirect_to @product
     else
       render :new
@@ -30,7 +27,7 @@ class ProductsController < ApplicationController
   end
 
   def edit
-    find_id
+    @product = Product.find(params[:id])
   end
 
   def update
@@ -44,11 +41,7 @@ class ProductsController < ApplicationController
   end
 
   def destroy
-    find_id
-
-    @product.variants.destroy_all
-    @product.destroy
-
+    Product.find(params[:id]).destroy
     redirect_to products_path
   end
 
@@ -62,6 +55,8 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit(:title, :description, :price, :brand_id)
+    params.require(:product).permit(:title, :description, :brand_id,
+      variants_attributes: [:id, :name, :price, :inventory])
   end
+
 end

@@ -54,6 +54,11 @@ td {
   text-align: center;
 }
 
+.top-nav {
+  display: flex;
+  justify-content: center;
+}
+
 input[type='search'] {
   margin: 0;
   height: 40px;
@@ -75,6 +80,7 @@ button:hover {
 
 a.link {
   background-color: #f4f4f4;
+  height: fit-content;
   padding: 10px 20px;
   border: 1px solid black;
   border-radius: 3px;
@@ -88,22 +94,46 @@ a.link:hover {
   color: white;
 }
 
-input {
+.form-table input,
+.nested-form input,
+input.submit {
   padding: 10px 50px;
-  margin-bottom: 15px;
-  margin-right: 10px;
-}
-
-select {
-  padding: 10px 89px;
-  margin-bottom: 15px;
-}
-
-textarea {
-  width: 26%;
-  margin-bottom: 15px;
 }
 
 input.submit {
-  padding: 10px 77px;
+  margin: 30px 0;
+}
+
+.form-table select {
+  padding: 10px 100px;
+}
+
+textarea {
+  width: 245px;
+  height: 50px;
+}
+
+form {
+  display: grid;
+  justify-content: center;
+}
+
+.search-form {
+  display: inline-block;
+}
+
+.form-table {
+  border-radius: 5px;
+  padding: 15px;
+  background: #f4f4f4;
+}
+
+.nested-form {
+  display: flex;
+  justify-content: center;
+  margin: 5px 0px;
+}
+
+.nested-form input {
+  margin: 0 15px;
 }
