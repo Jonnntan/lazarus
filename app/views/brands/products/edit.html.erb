@@ -8,11 +8,19 @@
     <div class='form'>
       <%= form_for @product, :url => brand_product_path(id: @product.id) do |form| %>
       <table class='form-table'>
-          <tr><td><%= form.text_field :title, placeholder: 'Title' %></tr></td>
-          <tr><td><%= form.text_field :brand_id, :value => @brand.name, disabled: true %></tr></td>
-          <tr><td><%= form.text_area :description, placeholder: 'Description' %></tr></td>
-          <tr><td><%= form.number_field :price, step: 0.1, placeholder: 'Price' %></tr></td>
-          <tr><td><%= form.submit :class => 'submit' %></tr></td>
+        <tr>
+          <td><%= form.label :title, "Title" %></td>
+          <td><%= form.text_field :title %></td>
+        </tr>
+        <tr>
+          <td><%= form.label :brand_id, "Brand" %></td>
+          <td><%= form.text_field :brand_id, :value => @brand.name, disabled: true %></td>
+        </tr>
+        <tr>
+          <td><%= form.label :description, "Description" %></td>
+          <td><%= form.text_area :description, placeholder: 'Description' %></td>
+        </tr>
+        <tr ><td colspan='2'><%= form.submit class: 'submit' %></td></tr>
       </table>
       <% end %>
     </div>

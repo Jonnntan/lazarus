@@ -3,7 +3,8 @@
 <body>
   <h1 style="text-align:center"><%= @product.title %> Variants</h1>
   <div style="text-align: center; display: flex; justify-content: center">
-    <%= link_to "Back to #{@product.brand.name} Product(s)", brand_products_path(@product.brand_id), :class => 'link' %>
+    <%= link_to 'Back to Product(s)', products_path, :class => 'link' %>
+    <%= link_to "Show #{@product.brand.name} Product(s)", brand_products_path(@product.brand_id), :class => 'link' %>
     <%= link_to 'Home', root_path, :class => 'link' %>
     <a href='<%= new_product_variant_path %> ' class="link">New Variant</a>
     <%= form_tag(search_path, :method => 'get', :class => 'search-form') do %>
