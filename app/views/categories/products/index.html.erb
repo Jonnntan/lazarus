@@ -1,12 +1,12 @@
 <html>
 
 <body>
-  <h1 style="text-align:center"><%= @category.name %> Product(s)</h1>
+  <h1 style="text-align:center"><%= @category.name %> Category Product(s)</h1>
   <div style="text-align: center; display:flex; justify-content: center">
     <%= link_to 'Back', :back, :class => 'link' %>
     <%= link_to 'Home', root_path, :class => 'link' %>
-    <a href='<%= new_brand_product_path %> ' class="link">New <%= @brand.name %> Product</a>
-    <%= form_tag(search_path, :method => 'get') do %>
+    <a href='<%= new_category_product_path %> ' class="link">New <%= @category.name %> Product</a>
+    <%= form_tag(search_path, :method => 'get', class: 'search-form') do %>
     <%= search_field_tag :search, params[:search], placeholder:'' %>
     <%= button_tag 'Search', :name => nil, :class => 'link' %>
     <% end %>
@@ -20,13 +20,13 @@
         <th>Variant(s)</th>
         <th>Actions</th>
       </tr>
-      <% @brand.products.each do |product| %>
+      <% @category.products.each do |product| %>
         <tr style="margin:5px 0px">
           <td><%= link_to product.title, product_variants_path(product) %></td>
           <td><%= product.category.name %></td>
           <td><%= product.variants.count %></td>
-          <td><a href='<%= edit_brand_product_path(product.brand_id, product.id) %>' class="link">Update</a>
-          <%= link_to "Delete", brand_product_path(brand_id: @brand.id, id: product.id), method: :delete, data: {confirm: 'Delete?'}, :class => "link" %></td>
+          <td><a href='<%= edit_category_product_path(product.brand_id, product.id) %>' class="link">Update</a>
+          <%= link_to "Delete", category_product_path(product.brand_id, product.id), method: :delete, data: {confirm: 'Delete?'}, :class => "link" %></td>
         </tr>
       <% end %>
     </table>

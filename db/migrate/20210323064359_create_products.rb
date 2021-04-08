@@ -5,6 +5,7 @@ class CreateProducts < ActiveRecord::Migration[6.1]
       t.text :description
 
       t.references :brand
+      t.references :category
       t.timestamps
     end
   end
