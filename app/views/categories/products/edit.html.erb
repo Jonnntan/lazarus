@@ -1,6 +1,10 @@
 <html>
 
 <body>
+  <div>
+    <%= link_to 'Back', :back, :class => 'link' %>
+  </div>
+  <h1 style="text-align:center">Update Category product</h1>
   <div class='form'>
     <%= form_with model: @product do |pform| %>
     <table class='form-table'>
@@ -14,7 +18,7 @@
       </tr>
       <tr>
         <td><%= pform.label :category_id, "Category" %></td>
-        <td><%= pform.collection_select :category_id, Category.all, :id, :name %><br></td>
+        <td><%= pform.text_field :category_id, value: @category.name, disabled: true%><br></td>
       </tr>
       <tr>
         <td><%= pform.label :description, "Description" %></td>
@@ -34,6 +38,7 @@
     </div>
     <% end %>
   </div>
+
 
 </body>
 

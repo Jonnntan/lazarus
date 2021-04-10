@@ -14,5 +14,11 @@ Rails.application.routes.draw do
     get :search, on: :collection
   end
 
+  resources :categories do
+    scope module: :categories do
+      resources :products
+    end
+  end
+
   root 'admin#index'
 end

@@ -5,9 +5,10 @@
   <div class='top-nav'>
     <a href='<%= products_path %> ' class="link">Products</a>
     <a href='<%= brands_path %> ' class="link">Brands</a>
-    <%= form_tag(search_path, :method => 'get', :class => 'search-form') do %>
+    <a href='<%= categories_path %> ' class="link">Categories</a>
+    <%= form_tag(search_products_path, :method => 'get', :class => 'search-form') do %>
     <%= search_field_tag :search, params[:search], placeholder:'' %>
-    <%= button_tag 'Search', :name => nil, :class => 'link' %>
+    <%= button_tag 'Search Products', :name => nil, :class => 'link' %>
     <% end %>
   </div>
   <ul>

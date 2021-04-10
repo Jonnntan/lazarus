@@ -1,0 +1,23 @@
+<html>
+
+<body>
+  <div style="text-align: center">
+    <%= link_to "Back to Categories", categories_path, :class => "link" %>
+    <%= link_to 'Home', root_path, :class => 'link' %>
+  </div>
+  <ul>
+    <table>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+      </tr>
+      <tr>
+        <td><%= @category.id %></td>
+        <td><%= @category.name %></td>
+      </tr>
+    </table>
+
+  </ul>
+</body>
+
+</html>

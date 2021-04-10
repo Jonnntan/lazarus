@@ -2,7 +2,7 @@
 
 <body>
   <div class='form'>
-    <%= form_with model: @product do |pform| %>
+    <%= form_for @product, url: category_products_path(@category.id) do |pform| %>
     <table class='form-table'>
       <tr>
         <td><%= pform.label :title, "Title" %></td>
@@ -14,7 +14,7 @@
       </tr>
       <tr>
         <td><%= pform.label :category_id, "Category" %></td>
-        <td><%= pform.collection_select :category_id, Category.all, :id, :name %><br></td>
+        <td><%= pform.text_field :category_id, :value => @category.name, disabled: true %></td>
       </tr>
       <tr>
         <td><%= pform.label :description, "Description" %></td>

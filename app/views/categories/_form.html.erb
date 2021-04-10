@@ -1,0 +1,15 @@
+<html>
+
+<body>
+  <div class='form'>
+    <%= form_with model: category do |form| %>
+    <table class='form-table'>
+      <tr><td><%= form.text_field :name, placeholder: 'Name' %></tr></td>
+      <tr><td><%= form.submit :class => 'submit' %></tr></td>
+    </table>
+      <% end %>
+  </div>
+
+</body>
+
+</html>

@@ -2,7 +2,8 @@
 
 <body>
   <div style="text-align: center">
-    <%= link_to "Back to #{@product.brand.name} Products", brand_products_path(@product.brand.id), :class => "link" %>
+    <%= link_to "Show #{@product.brand.name} Products", brand_products_path(@product.brand.id), :class => "link" %>
+    <%= link_to "Show #{@product.category.name} Products", category_products_path(@product.category_id), :class => "link" %>
     <%= link_to 'Home', root_path, :class => 'link' %>
   </div>
   <ul>
@@ -10,15 +11,17 @@
       <tr><th colspan="6">Product</th></tr>
       <tr>
         <th>ID</th>
-        <th>Brand</th>
         <th>Name</th>
+        <th>Brand</th>
+        <th>Category</th>
         <th>Description</th>
         <th>Actions</th>
       </tr>
       <tr>
         <td><%= @product.id %></td>
-        <td><%= @product.brand.name %></td>
         <td><%= @product.title %></td>
+        <td><%= @product.brand.name %></td>
+        <td><%= @product.category.name %></td>
         <td><%= @product.description %></td>
         <td><a href='<%= edit_product_path(@product) %> ' class="link">Update</a>
     <%= link_to "Delete", product_path(@product), method: :delete, data: {confirm: 'Delete?'}, :class => "link" %></td>
