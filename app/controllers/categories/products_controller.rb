@@ -37,6 +37,11 @@ class Categories::ProductsController < ApplicationController
     end
   end
 
+  def destroy
+    @product.destroy
+    redirect_to category_products_path
+  end
+
   private
 
   def product_params
