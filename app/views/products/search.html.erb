@@ -10,19 +10,19 @@
         <tr>
           <th>ID</th>
           <th>Name</th>
-          <th>Description</th>
-          <th>Price</th>
+          <th>Brand</th>
+          <th>Category</th>
+          <th>No. of Variant(s)</th>
           <th></th>
         </tr>
-        <% @results.each do |result| %>
+        <% @results.each do |product| %>
         <tr>
-
-            <td><%= result.id %><br></td>
-            <td><%= result.title %><br></td>
-            <td><%= result.description %><br></td>
-            <td><%= result.price %><br></td>
-            <td style='width: 25%'><%= link_to "<button>Update</button>".html_safe, edit_product_path(result), :class => "button" %>
-            <%= link_to "<button>Delete</button>".html_safe, product_path(result), method: :delete, data: {confirm: 'Delete?'}, :class => "button" %></td>
+            <td><%= product.id %></td>
+            <td><%= product.title %></td>
+            <td><%= product.brand.name %></td>
+            <td><%= product.category.name %></td>
+            <td><%= product.variants.count %></td>
+            <td><%= link_to 'Show Product', product_path(product), :class => 'link' %></td>
           </td>
         </tr>
         <% end %>

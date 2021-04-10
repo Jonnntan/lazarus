@@ -105,7 +105,9 @@ input.submit {
 }
 
 .form-table select {
-  padding: 10px 100px;
+  padding: 10px 0px;
+  width: 42%;
+  text-indent: 40%;
 }
 
 textarea {
@@ -136,4 +138,8 @@ form {
 
 .nested-form input {
   margin: 0 15px;
+}
+
+.form-edit-select{
+  width: 100% !important;
 }
