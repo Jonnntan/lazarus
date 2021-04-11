@@ -30,15 +30,16 @@
     <table>
       <th colspan="6">Variant(s)</th>
       <tr>
-        <th>ID</th>
+        <th>Variant ID</th>
+        <th>Product ID</th>
         <th colspan='2'>Name</th>
         <th>Inventory</th>
         <th>Price</th>
-        <th>Actions</th>
       </tr>
       <% @product.variants.each do |variant| %>
       <tr>
         <td><%= variant.id %></td>
+        <td><%= variant.product_id %></td>
         <td colspan='2'><%= variant.name %></td>
         <td><%= variant.inventory %></td>
         <td><%= variant.price %></td>

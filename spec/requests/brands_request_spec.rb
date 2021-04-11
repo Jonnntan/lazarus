@@ -38,13 +38,14 @@ RSpec.describe "Brands", type: :request do
   end
 
   describe '#destroy' do
+    let(:category) { create(:category) }
     let!(:brand) { create(:brand) }
     let!(:product) do
-       create_list(:product, 3, brand: brand)
+       create_list(:product, 3, brand: brand, category: category)
     end
     it "destroy a Brand & all it's products" do
       delete(brand_path(brand.id))
-      
+
       expect(Brand.count).to be_zero
       expect(brand.products.count).to be_zero
     end

@@ -3,15 +3,18 @@ require 'rails_helper'
 RSpec.describe 'Products', type: :request do
 
   let(:brand) { create(:brand) }
+  let(:category) { create(:category) }
 
   let(:product_params) do
     attributes_for(:product) do |pd|
       pd[:brand_id] = brand.id
+      pd[:category_id] = category.id
+      pd[:variants_attributes] = [attributes_for(:variant)]
     end
   end
 
   describe '#index' do
-    let!(:product_brand) { create(:product, brand: brand) }
+    let!(:product_brand) { create(:product, brand: brand, category: category) }
     it 'list all Products' do
       get '/products'
 
@@ -31,7 +34,7 @@ RSpec.describe 'Products', type: :request do
   end
 
   describe '#update' do
-    let(:product_brand) { create(:product, brand: brand) }
+    let(:product_brand) { create(:product, brand: brand, category: category) }
     it 'update a Product details and redirects to the show page' do
       put "/products/#{product_brand.id}", params: { product: {title: 'Lipstick'} }
 
@@ -43,7 +46,7 @@ RSpec.describe 'Products', type: :request do
 
   describe '#destroy' do
     let!(:product_brand) do
-      create_list(:product, 3, brand: brand)
+      create_list(:product, 3, brand: brand, category: category)
     end
     it 'destroy a Product and redirects to index page' do
       product1 = product_brand.first
@@ -53,13 +56,13 @@ RSpec.describe 'Products', type: :request do
     end
   end
 
-  # describe '#search' do
-  #   let!(:product_brand) { create(:product, brand: brand) }
-  #   it 'search Products by title' do
-  #     get '/search?search=test+product'
+  describe '#search' do
+    let!(:product_brand) { create(:product, brand: brand, category: category) }
+    it 'search Products by title' do
+      get '/search?search=test+product'
 
-  #     expect(response.body).to include('Test product 5')
-  #     expect(response).to have_http_status(200)
-  #   end
-  # end
+      expect(response.body).to include('Test product 7')
+      expect(response).to have_http_status(200)
+    end
+  end
 end
