@@ -4,6 +4,7 @@
   <div>
     <%= link_to 'Back', :back, :class => 'link' %>
     <%= link_to 'Home', root_path, :class => 'link' %>
+    <h2 class='flash-notice'><%= flash[:notice] %></h2>
     <h1 style="text-align:center">Create new category</h1>
     <%= render 'form', category: @category %>
   </div>

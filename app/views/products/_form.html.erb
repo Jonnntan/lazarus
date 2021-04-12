@@ -1,40 +1,51 @@
 <html>
-
-<body>
-  <div class='form'>
-    <%= form_with model: @product do |pform| %>
-    <table class='form-table'>
-      <tr>
-        <td><%= pform.label :title, "Title" %></td>
-        <td><%= pform.text_field :title %></td>
-      </tr>
-      <tr>
-        <td><%= pform.label :brand_id, "Brand" %></td>
-        <td><%= pform.collection_select :brand_id, Brand.all, :id, :name %></td>
-      </tr>
-      <tr>
-        <td><%= pform.label :category_id, "Category" %></td>
-        <td><%= pform.collection_select :category_id, Category.all, :id, :name %><br></td>
-      </tr>
-      <tr>
-        <td><%= pform.label :description, "Description" %></td>
-        <td><%= pform.text_area :description %></td>
-      </tr>
-    </table>
-    <h2>Variant</h2>
-    <%= pform.fields_for :variants do |vform| %>
-    <div class='nested-form'>
-      <%= vform.text_field :name, placeholder: 'Name' %>
-      <%= vform.number_field :inventory, min: 1, placeholder: 'Inventory' %>
-      <%= vform.number_field :price, placeholder: 'Price' %>
+  <body>
+    <div class='form'>
+      <div class='has-errors'>
+        <% if @product.errors.empty? %>
+        <% else %>
+          <h4><%= @product.errors.full_messages %></h4>
+        <% end %>
+      </div>
+      <%= form_with model: @product do |pform| %>
+        <table class='form-table'>
+          <tr>
+            <td><%= pform.label :title, "Title" %></td>
+            <td><%= pform.text_field :title %></td>
+          </tr>
+          <tr>
+            <td><%= pform.label :brand_id, "Brand" %></td>
+            <% if Brand.all.empty? %>
+              <td><%= link_to 'Create new brand', new_brand_path, :class => 'link' %></td>
+            <% else %>
+              <td><%= pform.collection_select :brand_id, Brand.all, :id, :name %></td>
+            <% end %>
+          </tr>
+          <tr>
+            <td><%= pform.label :category_id, "Category" %></td>
+            <% if Category.all.empty? %>
+              <td><%= link_to 'Create new category', new_brand_path, :class => 'link' %></td>
+            <% else %>
+              <td><%= pform.collection_select :category_id, Category.all, :id, :name %></td>
+            <% end %>
+          </tr>
+          <tr>
+            <td><%= pform.label :description, "Description" %></td>
+            <td><%= pform.text_area :description %></td>
+          </tr>
+        </table>
+        <h2>Variant</h2>
+        <%= pform.fields_for :variants do |vform| %>
+          <div class='nested-form'>
+            <%= vform.text_field :name, placeholder: 'Name' %>
+            <%= vform.number_field :inventory, min: 1, placeholder: 'Inventory' %>
+            <%= vform.number_field :price, placeholder: 'Price' %>
+          </div>
+        <% end %>
+        <div style="text-align:center">
+          <%= pform.submit class: 'submit' %>
+        </div>
+      <% end %>
     </div>
-    <% end %>
-    <div style="text-align:center">
-      <%= pform.submit class: 'submit' %>
-    </div>
-    <% end %>
-  </div>
-
-</body>
-
+  </body>
 </html>

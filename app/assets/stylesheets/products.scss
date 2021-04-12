@@ -143,3 +143,24 @@ form {
 .form-edit-select{
   width: 100% !important;
 }
+
+.field_with_errors input,
+.field_with_errors select,
+.field_with_errors textarea {
+  border: 1px solid red;
+}
+
+.flash-notice {
+  color: red;
+  text-align: center;
+}
+
+.has-errors {
+  width: 50%;
+  margin: 0 auto;
+  border-radius: 25px;
+  padding: 0 25px;
+  background-color: red;
+  color: white;
+  text-align: center;
+}

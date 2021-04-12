@@ -12,8 +12,17 @@ class ProductsController < ApplicationController
   end
 
   def new
-    @product = Product.new
-    @product.variants.build
+    if Brand.exists?
+      if Category.exists?
+        @product = Product.new
+        @product.variants.build
+      else
+        redirect_to new_category_path, notice: "Error: No exisiting Category found. Please create a Category."
+      end
+    else
+      # flash[:notice] = "Brand does not exist."
+      redirect_to new_brand_path, notice: "Error: No exisiting Brand found. Please create a Brand."
+    end
   end
 
   def create
